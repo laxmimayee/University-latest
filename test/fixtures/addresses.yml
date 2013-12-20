@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Dist: MyString
+  City: MyString
+  Pincode: 1
+  Descrption: MyText
+
+two:
+  Dist: MyString
+  City: MyString
+  Pincode: 1
+  Descrption: MyText
