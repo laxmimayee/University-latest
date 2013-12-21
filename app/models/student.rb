@@ -14,12 +14,20 @@ class Student < ActiveRecord::Base
  	validate  :mail_regex
 
  	validates :name, presence: true
+ 	#validates :name, uniqueness: true
 
- 	# after_save :asave
+ 	 before_save :bsave
   
-  # def asave
-  #   redirect_to "/admin/students/new"
-  # end 
+  
+  def bsave
+  
+  self.username = self.name + "university" 
+  self.password = self.fname + self.gender
+  end 
+
+ validates :username, uniqueness: true
+
+
 validates :DOB, presence: true
 #, date: {on_or_after: :birth_date_first, on_or_before: :birth_date_last}
 
@@ -28,8 +36,7 @@ validates :DOB, presence: true
     if mail.present? and mail.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|in|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$ /)
     	#\A[^@]+@[^@]+\z
       errors.add :mail, "This is not a valid email format"
-  else
-  	errors.add :mail, "Mail should be entered"
+  
     end
   end
 

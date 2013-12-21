@@ -34,7 +34,7 @@ ActiveAdmin.register Student do
   #  permitted
   # end
   
-      form do |f|
+      form  do  |f|
       f.inputs "Student" do
         f.input :name, :label=> "Enter name"
         f.input :fname,:label=> "Enter Surname name"
@@ -64,7 +64,7 @@ ActiveAdmin.register Student do
       
       end
 
-      
+      #validates :username, uniqueness: true
 
          
       show do |ad|
@@ -108,7 +108,7 @@ ActiveAdmin.register Student do
       column :image_file_name 
       column :DOB
       column :teacher
-      
+      column :username
       default_actions
     end
 
