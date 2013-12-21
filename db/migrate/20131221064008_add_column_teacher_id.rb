@@ -1,0 +1,5 @@
+class AddColumnTeacherId < ActiveRecord::Migration
+  def change
+  	add_column :students, :teachers_id, :integer
+  end
+end

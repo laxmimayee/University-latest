@@ -42,16 +42,21 @@ ActiveAdmin.register Student do
         f.input :standard, :as => :select, :collection => ["1st","2nd","3rd","4th"]
         f.input :image,:label =>"loadimage",  :as => :file
         f.input :mail, :as => :email
+        f.input :DOB, :label => "Date-Of-Birth",:as => :datepicker
+        #f.input :DOB, :label => "Date-Of-Birth", :as => :date_select, :start_year => 1990, :end_year => Date.current.year
         #f.input :image  #, :hint => f.template.image_tag(f.object.image.url(:thumbnail))
         end
 
-        f.inputs "Address Details", :for => [:address, f.object.address || Address.new] do |t|
+        f.inputs "Address Details", :for => [:address, f.object.address || Address.new] do|t|
         t.input :Dist, :as => :select, :collection => ["hyd","RRd","mbnr","mdk"]
         t.input :City, :as => :select, :collection => ["kkp","sr","apt"]
         t.input :Descrption, :as => :text, :label => "Description", input_html: { rows: "5" }
         t.input :Pincode
       end
-
+      f.inputs "teachers Details", :for => [:teacher, f.object.teacher || Teacher.new] do |t|
+        t.input :name, :as => :select, :include_blank => "--select--", :collection => Teacher.all.map(&:name).uniq
+        
+      end
 
 
       f.actions  #:as => :button
@@ -67,6 +72,7 @@ ActiveAdmin.register Student do
         row :fname
         row :name
         row :mail
+        row :DOB
         row :image do
            image_tag ad.image.url, class: 'my_image_size'
         end
@@ -84,6 +90,9 @@ ActiveAdmin.register Student do
             ad.address.Pincode
       end
 
+
+
+
       end
      
       active_admin_comments
@@ -97,9 +106,8 @@ ActiveAdmin.register Student do
       column :gender
       column :standard
       column :image_file_name 
-      
-      
-
+      column :DOB
+      column :teacher
       
       default_actions
     end
@@ -107,7 +115,7 @@ ActiveAdmin.register Student do
   filter :name
   filter :fname, :as => :select
   filter :mail, :as => :select
-  filter :address, :label => 'Dist', :collection => Address.all.map(&:Dist ).uniq
+  filter :address, :label => 'Dist', :collection => Address.all.map(&:Dist).uniq
 
 
 end
