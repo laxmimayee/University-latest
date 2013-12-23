@@ -7,7 +7,7 @@ ActiveAdmin.register Student do
       params.permit!
     end
 
-
+      
       def create
        create!(:notice => "Student has been created") { "/admin/students/new" }
       end

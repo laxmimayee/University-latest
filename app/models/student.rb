@@ -20,10 +20,16 @@ class Student < ActiveRecord::Base
   
   
   def bsave
+  	if(self.username==nil)
   
-  self.username = self.name + "university" 
-  self.password = self.fname + self.gender
+  self.username = self.name  + rand(1234..9999).to_s + "@gopiuniversity.in"
+		
+  self.password = self.fname + "password@1234"
   end 
+end
+
+
+
 
  validates :username, uniqueness: true
 
