@@ -34,8 +34,9 @@ controller do
     default_actions
   end
 
-  filter :email
-
+  filter  :email, :label => 'Search By email', :as => :select
+  
+  
   form do |f|
     f.inputs "Admin Details" do
       f.input :email

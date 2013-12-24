@@ -9,7 +9,7 @@ ActiveAdmin.register Student do
 
       
       def create
-       create!(:notice => "Student has been created") { "/admin/students/new" }
+       create!(:notice => "Student has been created with " ) { "/admin/students/new" }
       end
 
       def update

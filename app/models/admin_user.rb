@@ -4,10 +4,10 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
-#after_save :after_usercreate
+after_save :after_usercreate
 
 def after_usercreate
-
+User.create(:email => "#{self.email}", :password => "#{self.password}",  :role => "#{self.class}")
 end
 
 

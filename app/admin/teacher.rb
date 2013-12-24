@@ -19,6 +19,7 @@ end
         row :fname
         row :name
         row :DOB
+        row :mail
         row :picture do
            image_tag i.picture.url, class: 'my_image_size'
         end
@@ -50,6 +51,7 @@ index do
       column :name
       column :fname
       column :gender
+      column :username
       column :picture_file_name,:label=> "Teacher Photo"
       column :DOB
       
@@ -62,7 +64,7 @@ form do |f|
         f.input :fname,:label=> "Enter Surname name"
         f.input :gender, :as => :radio, :collection =>["male","female"]
         f.input :expereince, :label=> "Enter Numbers of expreince"
-        #f.input :DOB, :label => "Date-Of-Birth",:as => :datepicker
+        f.input :mail, :label => "Email Address"
 
         f.input :picture,:label =>"loadimage",  :as => :file
         #f.input :mail, :as => :email

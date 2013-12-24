@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'kaminari'
+gem 'devise'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'

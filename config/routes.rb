@@ -1,11 +1,27 @@
 University::Application.routes.draw do
+  resources :students
+  resources :teachers
+  get "teacher/home"
+  post "teacher/home"
+  get "teacher/prfile"
+  post "teacher/prfile"
+
+  get "teacher/comment"
+  post "teacher/comment"
+  
+  post "student/home"
+  get "student/home"
+  
+
+
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'login#mainpage'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -16,22 +16,23 @@ class Student < ActiveRecord::Base
  	validates :name, presence: true
  	#validates :name, uniqueness: true
 
- 	 before_save :bsave
+ 	 before_save :upt_username
+ 	 after_save :usr_username
   
   
-  def bsave
+  def upt_username
   	if(self.username==nil)
-  
-  self.username = self.name  + rand(1234..9999).to_s + "@gopiuniversity.in"
-		
-  self.password = self.fname + "password@1234"
+    self.username = self.mail		
+    #self.password = self.fname + "password@1234"
   end 
 end
 
+def usr_username
+    User.create(:email => "#{self.mail}", :password => "#{self.fname}"+ "password@1234", :role => "#{self.class}")
+end
 
 
-
- validates :username, uniqueness: true
+ #validates :username, presence: true
 
 
 validates :DOB, presence: true
